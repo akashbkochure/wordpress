@@ -1,4 +1,3 @@
-sudo mkdir -p /var/www/www.akashbkochure.com
 cd /var/www/www.akashbkochure.com
 sudo rm -rf wordpress
 sudo git clone https://github.com/akashbkochure/wordpress.git
