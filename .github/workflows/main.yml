@@ -20,7 +20,11 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa 52.91.181.6 >> ~/.ssh/known_hosts
 
-    - name: Execute Deployment Script
+    - name: Copy Script to Remote Instance
       run: |
-        chmod +x ./script.sh
-        ./script.sh
+        scp -i ~/.ssh/id_rsa ./script.sh ubuntu@52.91.181.6:/home/ubuntu/
+
+    - name: Execute Deployment Script on Remote Instance & Remove Script from Remote Instance
+      run: |
+        ssh -i ~/.ssh/id_rsa ubuntu@52.91.181.6 "chmod +x /home/ubuntu/script.sh && /home/ubuntu/script.sh"
+        ssh -i ~/.ssh/id_rsa ubuntu@52.91.181.6 "rm /home/ubuntu/script.sh"
