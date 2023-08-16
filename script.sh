@@ -5,6 +5,7 @@ cd /var/www/www.akashbkochure.com
 
 # Remove existing WordPress installation
 sudo rm -rf wordpress
+sudo git clone https://github.com/akashbkochure/wordpress.git
 
 # Stop and start the Nginx service
 sudo systemctl stop nginx
