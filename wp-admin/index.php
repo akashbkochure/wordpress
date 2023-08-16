@@ -1,5 +1,4 @@
 <?php
-echo "Hello world"
 /**
  * Dashboard Administration Screen
  *
