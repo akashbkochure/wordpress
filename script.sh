@@ -5,8 +5,6 @@ cd /var/www/www.akashbkochure.com
 
 # Remove existing WordPress installation
 sudo rm -rf wordpress
-sudo git clone https://github.com/akashbkochure/wordpress.git
-cd wordpress
 
 # Configure WordPress
 sudo rm -rf wp-config.php
