@@ -4,7 +4,7 @@
 cd /var/www/www.akashbkochure.com/wordpress
 
 # Update the WordPress codebase
-sudo git pull origin master
+sudo git pull origin main
 
 # Update the wp-config.php file
 sudo sed -i "s/database_name_here/example_db/" wp-config.php
