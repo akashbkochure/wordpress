@@ -1,4 +1,5 @@
 <?php
+echo "Hello World"
 /**
  * The base configuration for WordPress
  *
