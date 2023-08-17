@@ -1,10 +1,14 @@
 #!/bin/bash
 
+sudo rm -rf wordpress
+
 # Change to the directory containing the website files
 cd /var/www/www.akashbkochure.com
 
 # Remove existing WordPress installation
 sudo rm -rf wordpress
+sudo git clone https://github.com/akashbkochure/wordpress.git
+cd wordpress
 
 # Configure WordPress
 sudo rm -rf wp-config.php
@@ -61,3 +65,4 @@ echo "Deployment completed."
 
 # Exit the script
 exit 0
+
