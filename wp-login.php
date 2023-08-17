@@ -1,5 +1,4 @@
 <?php
-echo "Akash"
 /**
  * WordPress User Page
  *
