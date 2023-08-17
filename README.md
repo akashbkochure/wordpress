@@ -1,4 +1,4 @@
-# WordPress Deployment on LEMP Stack with Nginx (as a web-server) and Certbot SSL (for secure encryption of your website) Using GitHub Actions & DNS mapping with GoDaddy Domain Name :
+# WordPress Deployment on LEMP Stack with Nginx (as a web-server) and Certbot SSL (for secure encryption of your website) Automated CICD Using GitHub Actions & DNS mapping with GoDaddy Domain Name :
 
 
 
