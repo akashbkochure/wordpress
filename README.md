@@ -1,4 +1,4 @@
-### WordPress + LEMP + Certbot SSL + CICD GitHub Actions + Domain ###
+# WordPress + LEMP + Certbot SSL + CICD GitHub Actions + Domain 
 
 
 
