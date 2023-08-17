@@ -13,7 +13,7 @@ Here is the set up of an automated deployment process for a WordPress website us
 * Create Security Group. wordpress-sg (Port Open- ssh:22; http:80; https:443; Mysql-Aurora:3306)
 
 
-####### Create "A" records in Your Doamin in my case I have GoDaddy Domain. (Add PublicIp of your EC2 Instance) ########
+## Create "A" records in Your Doamin, in my case I have GoDaddy Domain. (Add PublicIp of your EC2 Instance).
 
 
 * SSH or login into the ec2 instance & Run the following Commands:
@@ -29,7 +29,7 @@ sudo chmod +x lemp-wordpress.sh  && sudo ./lemp-wordpress.sh
 
 
 
-####### In git repo add private-ssh key into secrets of repo & add PublicIp of ec2 Instance to your ./github/workflow/main.yml. Make some required changes in configuration files like index.php or wp-login.php and commit the changes will automatically deployed on your prod server / provided EC2 Instance using Github Actions ########
+## In git repo add private-ssh key into secrets of repo & add PublicIp of ec2 Instance to your ./github/workflow/main.yml. Make some required changes in configuration files like index.php or wp-login.php and commit the changes will automatically deployed on your prod server / provided EC2 Instance using Github Actions.
 
 
 
