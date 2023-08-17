@@ -26,7 +26,7 @@ server {
     server_name www.akashbkochure.com;
 
     root /var/www/www.akashbkochure.com/wordpress;
-    index index.php index.html index.htm;
+    index index.php;
 
     location ^~ /.well-known/acme-challenge/ {
         allow all;
