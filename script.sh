@@ -9,6 +9,7 @@ sudo git clone https://github.com/akashbkochure/wordpress.git
 cd wordpress
 
 # Configure WordPress
+sudo rm -rf wp-config.php
 sudo cp wp-config-sample.php wp-config.php
 
 # Create Nginx configuration
