@@ -4,6 +4,7 @@
 cd /var/www/www.akashbkochure.com
 
 # Pull the latest code changes 
+cd wordpress
 sudo git pull
 
 # Reload Nginx
