@@ -11,8 +11,9 @@
  * Core class used to implement displaying links in a list table.
  *
  * @since 3.1.0
+ * @access private
  *
- * @see WP_List_Table
+ * @see WP_List_Tsble
  */
 class WP_Links_List_Table extends WP_List_Table {
 
@@ -101,7 +102,7 @@ class WP_Links_List_Table extends WP_List_Table {
 		}
 		?>
 		<div class="alignleft actions">
-			<?php
+		<?php
 			$dropdown_options = array(
 				'selected'        => $cat_id,
 				'name'            => 'cat_id',
@@ -113,18 +114,16 @@ class WP_Links_List_Table extends WP_List_Table {
 				'orderby'         => 'name',
 			);
 
-			echo '<label class="screen-reader-text" for="cat_id">' . get_taxonomy( 'link_category' )->labels->filter_by_item . '</label>';
-
+			echo '<label class="screen-reader-text" for="cat_id">' . __( 'Filter by category' ) . '</label>';
 			wp_dropdown_categories( $dropdown_options );
-
 			submit_button( __( 'Filter' ), '', 'filter_action', false, array( 'id' => 'post-query-submit' ) );
-			?>
+		?>
 		</div>
 		<?php
 	}
 
 	/**
-	 * @return string[] Array of column titles keyed by their column name.
+	 * @return array
 	 */
 	public function get_columns() {
 		return array(
@@ -143,15 +142,15 @@ class WP_Links_List_Table extends WP_List_Table {
 	 */
 	protected function get_sortable_columns() {
 		return array(
-			'name'    => array( 'name', false, _x( 'Name', 'link name' ), __( 'Table ordered by Name.' ), 'asc' ),
-			'url'     => array( 'url', false, __( 'URL' ), __( 'Table ordered by URL.' ) ),
-			'visible' => array( 'visible', false, __( 'Visible' ), __( 'Table ordered by Visibility.' ) ),
-			'rating'  => array( 'rating', false, __( 'Rating' ), __( 'Table ordered by Rating.' ) ),
+			'name'    => 'name',
+			'url'     => 'url',
+			'visible' => 'visible',
+			'rating'  => 'rating',
 		);
 	}
 
 	/**
-	 * Gets the name of the default primary column.
+	 * Get the name of the default primary column.
 	 *
 	 * @since 4.3.0
 	 *
@@ -165,22 +164,16 @@ class WP_Links_List_Table extends WP_List_Table {
 	 * Handles the checkbox column output.
 	 *
 	 * @since 4.3.0
-	 * @since 5.9.0 Renamed `$link` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
-	 * @param object $item The current link object.
+	 * @param object $link The current link object.
 	 */
-	public function column_cb( $item ) {
-		// Restores the more descriptive, specific name for use within this method.
-		$link = $item;
-
+	public function column_cb( $link ) {
 		?>
-		<label class="label-covers-full-cell" for="cb-select-<?php echo $link->link_id; ?>">
-			<span class="screen-reader-text">
+		<label class="screen-reader-text" for="cb-select-<?php echo $link->link_id; ?>">
 			<?php
-			/* translators: Hidden accessibility text. %s: Link name. */
+			/* translators: %s: Link name. */
 			printf( __( 'Select %s' ), $link->link_name );
 			?>
-			</span>
 		</label>
 		<input type="checkbox" name="linkcheck[]" id="cb-select-<?php echo $link->link_id; ?>" value="<?php echo esc_attr( $link->link_id ); ?>" />
 		<?php
@@ -284,12 +277,11 @@ class WP_Links_List_Table extends WP_List_Table {
 	 * Handles the default column output.
 	 *
 	 * @since 4.3.0
-	 * @since 5.9.0 Renamed `$link` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
-	 * @param object $item        Link object.
+	 * @param object $link        Link object.
 	 * @param string $column_name Current column name.
 	 */
-	public function column_default( $item, $column_name ) {
+	public function column_default( $link, $column_name ) {
 		/**
 		 * Fires for each registered custom link column.
 		 *
@@ -298,7 +290,7 @@ class WP_Links_List_Table extends WP_List_Table {
 		 * @param string $column_name Name of the custom column.
 		 * @param int    $link_id     Link ID.
 		 */
-		do_action( 'manage_link_custom_column', $column_name, $item->link_id );
+		do_action( 'manage_link_custom_column', $column_name, $link->link_id );
 	}
 
 	public function display_rows() {
@@ -318,21 +310,17 @@ class WP_Links_List_Table extends WP_List_Table {
 	 * Generates and displays row action links.
 	 *
 	 * @since 4.3.0
-	 * @since 5.9.0 Renamed `$link` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
-	 * @param object $item        Link being acted upon.
+	 * @param object $link        Link being acted upon.
 	 * @param string $column_name Current column name.
 	 * @param string $primary     Primary column name.
-	 * @return string Row actions output for links, or an empty string
-	 *                if the current column is not the primary column.
+	 * @return string Row action output for links.
 	 */
-	protected function handle_row_actions( $item, $column_name, $primary ) {
+	protected function handle_row_actions( $link, $column_name, $primary ) {
 		if ( $primary !== $column_name ) {
 			return '';
 		}
 
-		// Restores the more descriptive, specific name for use within this method.
-		$link      = $item;
 		$edit_link = get_edit_bookmark_link( $link );
 
 		$actions           = array();
