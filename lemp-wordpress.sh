@@ -8,7 +8,7 @@ sudo apt install nginx -y
 sudo systemctl enable nginx
 
 # Install PHP and required extensions
-sudo apt install php8.1-fpm php8.1-mysql php8.1-cli php8.1-common php8.1-readline -y
+sudo apt install php7.4-fpm php7.4-mysql php7.4-cli php7.4-common php7.4-readline -y
 
 # Install MariaDB
 sudo apt install mariadb-server -y
