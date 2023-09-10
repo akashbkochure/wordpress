@@ -11,8 +11,8 @@ sudo git pull origin main
 sudo systemctl reload nginx
 
 # SSL certificate Test & Renew
-sudo certbot renew --dry-run
-sudo certbot renew
+# sudo certbot renew --dry-run
+# sudo certbot renew
 
 # Print a message at the end of the script
 echo "Deployment completed."
